@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Northstar Order Tracker</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <!-- LOGIN SCREEN -->
+        <section id="login-screen">
+            <h1>Northstar Order Tracker</h1>
+            <form id="login-form">
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit">Log In</button>               
+            </form>
+            <p id="login-error"></p>
+        </section>
+
+        <!-- BOARD SCREEN (hidden until login) -->
+        <section id="'board-screen" class="'hidden">
+            <h1>Your Orders</h1>
+
+            <div class="board">
+                <div class="column">
+                    <h2>Preparing</h2>
+                    <div class="cards" id="col-preparing"></div>
+                </div>
+
+                <div class="column">
+                    <h2>In Transit</h2>
+                    <div class="cards" id="col-transit"></div>
+                </div>
+
+                <div class="column">
+                    <h2>Arrived</h2>
+                    <div class="cards" id="col-arrived"></div>
+                </div>
+
+                <div class="column">
+                    <h2>Returns / Refunds</h2>
+                    <div class="cards" id="col-returns"></div>
+                </div>
+            </div>
+
+            <footer>
+                <h3>Need to return an item?</h3>
+                <p>Pack the item in its original box, attachthe return label from your confirmation email, and drop it at any courier point. Refunds are processed within 5-7 business days of us recieving the idem.</p>
+            </footer>
+        </section>
+
+        <script src="script.js"></script>
+    </body>
+</html>
