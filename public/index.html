@@ -2,52 +2,98 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Northstar Order Tracker</title>
         <link rel="stylesheet" href="style.css">
     </head>
-    <body>
+    <body class="has-page-bg login-page-bg">
 
-        <!-- LOGIN SCREEN -->
+        <!-- Sliding background carousel (mirrors the track/returns page-bg treatment) -->
+        <div class="login-bg-slider" aria-hidden="true">
+            <div class="login-bg-slide" style="background-image: url('images/carousel-1.jpg');"></div>
+            <div class="login-bg-slide" style="background-image: url('images/carousel-2.jpg');"></div>
+            <div class="login-bg-slide" style="background-image: url('images/carousel-3.jpg');"></div>
+        </div>
+
+        <!-- LOGIN / SIGNUP SCREEN -->
         <section id="login-screen">
-            <h1>Northstar Order Tracker</h1>
-            <form id="login-form">
-                <input type="text" id="username" placeholder="Username" required>
-                <input type="password" id="password" placeholder="Password" required>
-                <button type="submit">Log In</button>               
-            </form>
-            <p id="login-error"></p>
+            <div class="auth-layout">
+
+                <div class="auth-card">
+                    <div class="brand-mark">
+                        <img src="images/logo.svg" alt="Northstar logo" class="brand-logo">
+                        <span class="brand-name">Northstar</span>
+                    </div>
+
+                    <div class="auth-tabs">
+                        <button type="button" class="auth-tab active" data-tab="login">Log In</button>
+                        <button type="button" class="auth-tab" data-tab="signup">Sign Up</button>
+                    </div>
+
+                    <form id="login-form" class="auth-form">
+                        <input type="text" id="login-username" placeholder="Username" autocomplete="username" required>
+                        <input type="password" id="login-password" placeholder="Password" autocomplete="current-password" required>
+                        <button type="submit">Log In</button>
+                    </form>
+
+                    <form id="signup-form" class="auth-form hidden">
+                        <input type="text" id="signup-name" placeholder="Full name" autocomplete="name" required>
+                        <input type="text" id="signup-username" placeholder="Choose a username" autocomplete="username" required>
+                        <input type="password" id="signup-password" placeholder="Choose a password" autocomplete="new-password" required>
+                        <button type="submit">Create Account</button>
+                    </form>
+
+                    <p id="auth-error"></p>
+                    <p class="hint"><a href="track.html">Just want to track one order? &rarr;</a></p>
+                </div>
+
+            </div>
         </section>
 
         <!-- BOARD SCREEN (hidden until login) -->
-        <section id="'board-screen" class="'hidden">
-            <h1>Your Orders</h1>
+        <section id="board-screen" class="hidden">
+            <div class="page-shell">
+                <header class="site-header">
+                    <a href="index.html" class="brand">
+                        <img src="images/logo.svg" alt="" class="brand-logo-small">
+                        Northstar
+                    </a>
+                    <nav class="site-nav">
+                        <a href="track.html">Track order</a>
+                        <a href="returns.html">Start a return</a>
+                        <a href="index.html" class="active">My account</a>
+                        <button id="logout-btn" class="text-button">Log out</button>
+                    </nav>
+                </header>
 
-            <div class="board">
-                <div class="column">
-                    <h2>Preparing</h2>
-                    <div class="cards" id="col-preparing"></div>
-                </div>
+                <main>
+                    <p class="eyebrow">My account</p>
+                    <h1 id="welcome-heading">Your Orders</h1>
 
-                <div class="column">
-                    <h2>In Transit</h2>
-                    <div class="cards" id="col-transit"></div>
-                </div>
+                    <div class="board">
+                        <div class="column">
+                            <h2>Preparing</h2>
+                            <div class="cards" id="col-preparing"></div>
+                        </div>
 
-                <div class="column">
-                    <h2>Arrived</h2>
-                    <div class="cards" id="col-arrived"></div>
-                </div>
+                        <div class="column">
+                            <h2>In Transit</h2>
+                            <div class="cards" id="col-transit"></div>
+                        </div>
 
-                <div class="column">
-                    <h2>Returns / Refunds</h2>
-                    <div class="cards" id="col-returns"></div>
-                </div>
+                        <div class="column">
+                            <h2>Arrived</h2>
+                            <div class="cards" id="col-arrived"></div>
+                        </div>
+                    </div>
+
+                    <footer class="help-footer">
+                        <h3>Need to return an item?</h3>
+                        <p>Pack the item in its original box, attach the return label from your confirmation email, and drop it at any courier point. Refunds are processed within 5-7 business days of us receiving the item.</p>
+                        <a href="returns.html" class="link-button">Start a return &rarr;</a>
+                    </footer>
+                </main>
             </div>
-
-            <footer>
-                <h3>Need to return an item?</h3>
-                <p>Pack the item in its original box, attachthe return label from your confirmation email, and drop it at any courier point. Refunds are processed within 5-7 business days of us recieving the idem.</p>
-            </footer>
         </section>
 
         <script src="script.js"></script>
