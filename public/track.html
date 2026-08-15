@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Track an Order — Northstar</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body class="has-page-bg track-page-bg">
+
+        <div class="page-shell">
+            <header class="site-header">
+                <a href="index.html" class="brand">
+                    <img src="images/logo.svg" alt="" class="brand-logo-small">
+                    Northstar
+                </a>
+                <nav class="site-nav">
+                    <a href="track.html" class="active">Track order</a>
+                    <a href="returns.html">Start a return</a>
+                    <a href="index.html">My account</a>
+                </nav>
+            </header>
+
+            <main class="track-main">
+                <p class="eyebrow">Order lookup</p>
+                <h1>Where's my order?</h1>
+                <p class="lede">Enter your order ID to see its current checkpoint — no account needed.</p>
+
+                <form id="track-form" class="track-form">
+                    <input type="text" id="orderId" placeholder="e.g. NS-1003" autocomplete="off" required>
+                    <button type="submit">Track it</button>
+                </form>
+                <p class="hint">Try order IDs NS-1001 through NS-1005</p>
+
+                <div id="track-result" class="hidden"></div>
+            </main>
+        </div>
+
+        <script src="track.js"></script>
+    </body>
+</html>
