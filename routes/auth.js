@@ -1,18 +1,21 @@
 // routes/auth.js
 // Task: Backend server + database setup (owner: Marion)
 //
-// Login + signup. No real sessions/JWT — this just checks credentials
-// against our mock user list (login) or adds a new one to it (signup).
-// That's enough for an MVP proving the order-status and returns flows
-// work end to end, including a real "create an account" path.
+// Login + signup, now backed by SQLite (data/db.js) instead of an
+// in-memory array. Still no real JWT/session store — this is an MVP —
+// but every user now carries a `role` (customer / retailer / dispatcher
+// / rider) that the frontend stores and the RBAC middleware checks on
+// every protected request.
 
 const express = require("express");
-const { findUser, usernameExists, createUser } = require("../data/mockOrders");
+const { findUser, usernameExists, createUser } = require("../data/db");
 
 const router = express.Router();
 
+const ALLOWED_SIGNUP_ROLES = ["customer", "retailer", "dispatcher", "rider"];
+
 router.post("/signup", (req, res) => {
-  const { username, password, name } = req.body || {};
+  const { username, password, name, role } = req.body || {};
 
   if (!username || !password || !name) {
     return res.status(400).json({ error: "Name, username, and password are all required." });
@@ -30,8 +33,9 @@ router.post("/signup", (req, res) => {
     return res.status(409).json({ error: "That username is already taken." });
   }
 
-  const user = createUser({ username: username.trim(), password, name: name.trim() });
-  res.status(201).json({ username: user.username, name: user.name });
+  const safeRole = ALLOWED_SIGNUP_ROLES.includes(role) ? role : "customer";
+  const user = createUser({ username: username.trim(), password, name: name.trim(), role: safeRole });
+  res.status(201).json({ username: user.username, name: user.name, role: user.role });
 });
 
 router.post("/login", (req, res) => {
@@ -47,7 +51,7 @@ router.post("/login", (req, res) => {
     return res.status(401).json({ error: "Invalid username or password." });
   }
 
-  res.json({ username: user.username, name: user.name });
+  res.json({ username: user.username, name: user.name, role: user.role });
 });
 
 module.exports = router;

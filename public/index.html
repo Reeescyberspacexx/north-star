@@ -40,6 +40,12 @@
                         <input type="text" id="signup-name" placeholder="Full name" autocomplete="name" required>
                         <input type="text" id="signup-username" placeholder="Choose a username" autocomplete="username" required>
                         <input type="password" id="signup-password" placeholder="Choose a password" autocomplete="new-password" required>
+                        <select id="signup-role">
+                            <option value="customer">Customer</option>
+                            <option value="retailer">Retailer</option>
+                            <option value="dispatcher">Dispatcher</option>
+                            <option value="rider">Rider</option>
+                        </select>
                         <button type="submit">Create Account</button>
                     </form>
 
@@ -70,32 +76,63 @@
                     <p class="eyebrow">My account</p>
                     <h1 id="welcome-heading">Your Orders</h1>
 
-                    <div class="board">
-                        <div class="column">
-                            <h2>Preparing</h2>
-                            <div class="cards" id="col-preparing"></div>
+                    <!-- CUSTOMER VIEW -->
+                    <div id="customer-panel" class="hidden">
+                        <div class="board">
+                            <div class="column">
+                                <h2>Preparing</h2>
+                                <div class="cards" id="col-preparing"></div>
+                            </div>
+
+                            <div class="column">
+                                <h2>In Transit</h2>
+                                <div class="cards" id="col-transit"></div>
+                            </div>
+
+                            <div class="column">
+                                <h2>Arrived</h2>
+                                <div class="cards" id="col-arrived"></div>
+                            </div>
                         </div>
 
-                        <div class="column">
-                            <h2>In Transit</h2>
-                            <div class="cards" id="col-transit"></div>
-                        </div>
-
-                        <div class="column">
-                            <h2>Arrived</h2>
-                            <div class="cards" id="col-arrived"></div>
-                        </div>
+                        <footer class="help-footer">
+                            <h3>Need to return an item?</h3>
+                            <p>Pack the item in its original box, attach the return label from your confirmation email, and drop it at any courier point. Refunds are processed within 5-7 business days of us receiving the item.</p>
+                            <a href="returns.html" class="link-button">Start a return &rarr;</a>
+                        </footer>
                     </div>
 
-                    <footer class="help-footer">
-                        <h3>Need to return an item?</h3>
-                        <p>Pack the item in its original box, attach the return label from your confirmation email, and drop it at any courier point. Refunds are processed within 5-7 business days of us receiving the item.</p>
-                        <a href="returns.html" class="link-button">Start a return &rarr;</a>
-                    </footer>
+                    <!-- RETAILER VIEW: create orders + live status feed -->
+                    <div id="retailer-panel" class="hidden">
+                        <form id="create-order-form" class="auth-form" style="max-width: 420px;">
+                            <input type="text" id="new-order-username" placeholder="Customer username (e.g. felix)" required>
+                            <input type="text" id="new-order-item" placeholder="Item description" required>
+                            <input type="date" id="new-order-eta" required>
+                            <input type="text" id="new-order-phone" placeholder="Customer phone (optional)">
+                            <button type="submit">Create Order</button>
+                        </form>
+                        <p id="retailer-msg" class="hint"></p>
+
+                        <h2 style="margin-top: 2rem;">Live Status Feed</h2>
+                        <div class="cards" id="retailer-feed"></div>
+                    </div>
+
+                    <!-- DISPATCHER VIEW: open orders + rider assignment -->
+                    <div id="dispatcher-panel" class="hidden">
+                        <h2>Open Requests</h2>
+                        <div class="cards" id="dispatch-list"></div>
+                    </div>
+
+                    <!-- RIDER VIEW: assigned tasks + scanner link -->
+                    <div id="rider-panel" class="hidden">
+                        <h2>My Deliveries</h2>
+                        <div class="cards" id="rider-list"></div>
+                    </div>
                 </main>
             </div>
         </section>
 
+        <script src="/socket.io/socket.io.js"></script>
         <script src="script.js"></script>
     </body>
 </html>

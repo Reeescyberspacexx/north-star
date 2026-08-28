@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Track an Order — Northstar</title>
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     </head>
     <body class="has-page-bg track-page-bg">
 
@@ -33,9 +34,22 @@
                 <p class="hint">Try order IDs NS-1001 through NS-1005</p>
 
                 <div id="track-result" class="hidden"></div>
+
+                <!-- Live map: rider/parcel position, updates on order:updated -->
+                <div id="map" style="height: 300px; width: 100%; margin-top: 1.5rem; border-radius: 8px;" class="hidden"></div>
+
+                <!-- Rider-only: scan the parcel barcode to confirm delivery -->
+                <div id="scan-section" class="hidden" style="margin-top: 1.5rem;">
+                    <button type="button" id="scan-btn" class="link-button small">Scan to Deliver</button>
+                    <div id="scan-reader" style="width: 320px; max-width: 100%; margin-top: 1rem;"></div>
+                    <p id="scan-msg" class="hint"></p>
+                </div>
             </main>
         </div>
 
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script src="https://unpkg.com/html5-qrcode"></script>
         <script src="track.js"></script>
     </body>
 </html>
