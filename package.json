@@ -18,7 +18,11 @@
     "url": "https://github.com/Reeescyberspacexx/north-star/issues"
   },
   "homepage": "https://github.com/Reeescyberspacexx/north-star#readme",
+  "engines": {
+    "node": ">=22.5.0"
+  },
   "dependencies": {
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "socket.io": "^4.8.3"
   }
 }
