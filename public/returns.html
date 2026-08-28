@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Returns & Refunds — Northstar</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body class="has-page-bg returns-page-bg">
+
+        <div class="page-shell">
+            <header class="site-header">
+                <a href="index.html" class="brand">
+                    <img src="images/logo.svg" alt="" class="brand-logo-small">
+                    Northstar
+                </a>
+                <nav class="site-nav">
+                    <a href="track.html">Track order</a>
+                    <a href="returns.html" class="active">Start a return</a>
+                    <a href="index.html">My account</a>
+                </nav>
+            </header>
+
+            <main class="track-main">
+                <p class="eyebrow">Returns & refunds</p>
+                <h1>Start a return</h1>
+                <p class="lede">Answer a couple of questions and we'll tell you right away if it's eligible.</p>
+
+                <form id="returns-form" class="track-form returns-form">
+                    <label for="orderId">Order ID</label>
+                    <input type="text" id="orderId" placeholder="e.g. NS-1003" required>
+
+                    <label for="reason">Why are you returning this item?</label>
+                    <select id="reason" required>
+                        <option value="" disabled selected>Choose a reason</option>
+                        <option value="defective">It's defective or damaged</option>
+                        <option value="wrong_item">Wrong item was shipped</option>
+                        <option value="changed_mind">I changed my mind</option>
+                    </select>
+
+                    <div id="condition-group" class="hidden">
+                        <label for="condition">What condition is it in?</label>
+                        <select id="condition">
+                            <option value="" disabled selected>Choose condition</option>
+                            <option value="unopened">Unopened / unused</option>
+                            <option value="opened">Opened / used</option>
+                        </select>
+                    </div>
+
+                    <button type="submit">Check eligibility</button>
+                </form>
+
+                <div id="returns-result" class="hidden"></div>
+            </main>
+        </div>
+
+        <script src="returns.js"></script>
+    </body>
+</html>

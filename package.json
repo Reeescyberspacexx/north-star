@@ -1,0 +1,28 @@
+{
+  "name": "north-star",
+  "version": "1.0.0",
+  "description": "Northstar Retail's support team is buried in repetitive tickets. This tool  handles two of the biggest ones: order status & order returns and refunds, so customers  get answers instantly instead of waiting on a human.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Reeescyberspacexx/north-star.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Reeescyberspacexx/north-star/issues"
+  },
+  "homepage": "https://github.com/Reeescyberspacexx/north-star#readme",
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "socket.io": "^4.8.3"
+  }
+}

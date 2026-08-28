@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Track an Order — Northstar</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    </head>
+    <body class="has-page-bg track-page-bg">
+
+        <div class="page-shell">
+            <header class="site-header">
+                <a href="index.html" class="brand">
+                    <img src="images/logo.svg" alt="" class="brand-logo-small">
+                    Northstar
+                </a>
+                <nav class="site-nav">
+                    <a href="track.html" class="active">Track order</a>
+                    <a href="returns.html">Start a return</a>
+                    <a href="index.html">My account</a>
+                </nav>
+            </header>
+
+            <main class="track-main">
+                <p class="eyebrow">Order lookup</p>
+                <h1>Where's my order?</h1>
+                <p class="lede">Enter your order ID to see its current checkpoint — no account needed.</p>
+
+                <form id="track-form" class="track-form">
+                    <input type="text" id="orderId" placeholder="e.g. NS-1003" autocomplete="off" required>
+                    <button type="submit">Track it</button>
+                </form>
+                <p class="hint">Try order IDs NS-1001 through NS-1005</p>
+
+                <div id="track-result" class="hidden"></div>
+
+                <!-- Live map: rider/parcel position, updates on order:updated -->
+                <div id="map" style="height: 300px; width: 100%; margin-top: 1.5rem; border-radius: 8px;" class="hidden"></div>
+
+                <!-- Rider-only: scan the parcel barcode to confirm delivery -->
+                <div id="scan-section" class="hidden" style="margin-top: 1.5rem;">
+                    <button type="button" id="scan-btn" class="link-button small">Scan to Deliver</button>
+                    <div id="scan-reader" style="width: 320px; max-width: 100%; margin-top: 1rem;"></div>
+                    <p id="scan-msg" class="hint"></p>
+                </div>
+            </main>
+        </div>
+
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script src="https://unpkg.com/html5-qrcode"></script>
+        <script src="track.js"></script>
+    </body>
+</html>
