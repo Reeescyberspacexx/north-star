@@ -1,4 +1,4 @@
-# Northstar — Delivery Tracking & Support Platform
+# Northstar - Delivery Tracking & Support Platform
 
 ## What is this project?
 
@@ -9,16 +9,16 @@ the same as before.
 On top of that, this project adds a full delivery system. Here's the short version of
 what happens now:
 
-1. A **retailer** (a shop) creates an order.
-2. A **dispatcher** (the person who plans deliveries) assigns a **rider** to deliver it.
+1. A *retailer* (a shop) creates an order.
+2. A *dispatcher* (the person who plans deliveries) assigns a *rider* to deliver it.
 3. The rider picks it up, delivers it, and scans a barcode to prove it was delivered.
-4. The **customer** sees every one of these steps happen live on their screen —
+4. The *customer* sees every one of these steps happen live on their screen,
    they never have to refresh the page.
 5. The customer also gets an automatic text message, and a mock mobile-money payment
    prompt, the moment their order is delivered.
 
-There are four types of people who use this app: **customers**, **retailers**,
-**dispatchers**, and **riders**. Each one sees a different screen with only the
+There are four types of people who use this app: *customers*, *retailers*,
+*dispatchers*, and *riders*. Each one sees a different screen with only the
 buttons and information relevant to them.
 
 ---
@@ -46,13 +46,13 @@ buttons and information relevant to them.
 
 Think of this app as having two halves that talk to each other:
 
-- **The backend** — this is the part that runs on a server. It stores all the data
+- The backend - this is the part that runs on a server. It stores all the data
   (orders, users, etc.) and decides who is allowed to do what. It's written in
-  JavaScript using a tool called **Node.js**, with a helper library called
-  **Express** that makes it easier to handle web requests.
+  JavaScript using a tool called Node.js, with a helper library called
+  Express that makes it easier to handle web requests.
 
-- **The frontend** — this is what you actually see and click on in your browser. It's
-  plain HTML, CSS, and JavaScript. No fancy frameworks, no extra build steps — the
+- The frontend - this is what you actually see and click on in your browser. It's
+  plain HTML, CSS, and JavaScript. No fancy frameworks, no extra build steps, the
   files you see are exactly the files that run.
 
 These two halves talk to each other in two ways:
