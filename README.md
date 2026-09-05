@@ -422,3 +422,8 @@ Being upfront about the current limits of this project:
 ## License
 
 See [LICENSE](LICENSE).
+
+   ## Diagrams
+
+   ![Entity Relationship Diagram](erd-diagram.png)
+   ![Delivery Workflow Diagram](workflow-diagram.png)
